@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUYNHDAITACOO - Vay nhanh</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+  background:#f3f6fb;
+  color:#172033;
+}
+
+header{
+  background:linear-gradient(135deg,#0757c9,#0b7bea,#e91d2e);
+  color:white;
+  padding:22px 18px;
+  border-radius:0 0 25px 25px;
+}
+
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:23px;
+  font-weight:800;
+}
+
+.badge{
+  background:rgba(255,255,255,.18);
+  padding:7px 11px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+.container{
+  width:100%;
+  max-width:520px;
+  margin:auto;
+  padding:18px;
+}
+
+.card{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:16px;
+  box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.hero{
+  margin-top:-5px;
+}
+
+.hero h1{
+  font-size:27px;
+  margin-bottom:8px;
+}
+
+.hero p{
+  line-height:1.5;
+  opacity:.9;
+}
+
+.btn{
+  width:100%;
+  border:0;
+  border-radius:14px;
+  padding:15px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:12px;
+}
+
+.btn-red{
+  background:#e51e2a;
+  color:white;
+}
+
+.btn-blue{
+  background:#075dcc;
+  color:white;
+}
+
+.btn-light{
+  background:#eef5ff;
+  color:#075dcc;
+}
+
+.input{
+  width:100%;
+  padding:14px;
+  border:1px solid #d9dfeb;
+  border-radius:12px;
+  margin-top:7px;
+  margin-bottom:13px;
+  font-size:15px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:#0874e8;
+}
+
+label{
+  font-size:14px;
+  font-weight:600;
+}
+
+.title{
+  font-size:20px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.sub{
+  color:#6b7280;
+  font-size:14px;
+  line-height:1.5;
+  margin-bottom:16px;
+}
+
+.step{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.step-number{
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  background:#075dcc;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+
+.step.active .step-number{
+  background:#e51e2a;
+}
+
+.step-text{
+  font-size:14px;
+}
+
+.amount{
+  font-size:30px;
+  font-weight:800;
+  color:#075dcc;
+  text-align:center;
+  margin:12px 0;
+}
+
+.quick{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+}
+
+.quick button{
+  border:1px solid #d9e4f5;
+  background:#f6f9ff;
+  padding:10px 4px;
+  border-radius:10px;
+  color:#075dcc;
+  font-weight:700;
+}
+
+.range{
+  width:100%;
+}
+
+.hidden{
+  display:none;
+}
+
+.info{
+  background:#f1f7ff;
+  border-left:4px solid #075dcc;
+  padding:13px;
+  border-radius:10px;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.warning{
+  background:#fff5f5;
+  border-left:4px solid #e51e2a;
+  padding:13px;
+  border-radius:10px;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.status{
+  text-align:center;
+  padding:20px 10px;
+}
+
+.spinner{
+  width:52px;
+  height:52px;
+  border:5px solid #dce8fa;
+  border-top-color:#075dcc;
+  border-right-color:#e51e2a;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  margin:10px auto 20px;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+.success-icon{
+  font-size:50px;
+  margin-bottom:10px;
+}
+
+footer{
+  text-align:center;
+  padding:25px 15px;
+  color:#777;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.nav{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:15px;
+}
+
+.nav button{
+  border:0;
+  padding:12px 5px;
+  border-radius:12px;
+  background:#fff;
+  color:#075dcc;
+  font-weight:700;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="logo">HUYNHDAITACOO</div>
+    <div class="badge">VAY NHANH</div>
+  </div>
+
+  <div class="hero" style="margin-top:25px;">
+    <h1>Vay nhanh trực tuyến</h1>
+    <p>
+      Đăng ký hồ sơ trực tuyến và theo dõi quá trình xác thực hồ sơ.
+    </p>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- TRANG ĐĂNG NHẬP -->
+<section id="loginPage">
+
+  <div class="card">
+    <div class="title">Đăng nhập</div>
+    <div class="sub">
+      Đăng nhập để tiếp tục hồ sơ vay.
+    </div>
+
+    <label>Số điện thoại</label>
+    <input class="input" type="tel" placeholder="Nhập số điện thoại">
+
+    <label>Mật khẩu</label>
+    <input class="input" type="password" placeholder="Nhập mật khẩu">
+
+    <button class="btn btn-blue" onclick="login()">
+      Đăng nhập
+    </button>
+
+    <button class="btn btn-light" onclick="showRegister()">
+      Tạo tài khoản
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="title">Điều kiện cơ bản</div>
+
+    <div class="info">
+      • Độ tuổi từ <b>18 đến 50 tuổi</b><br>
+      • Cung cấp thông tin chính xác<br>
+      • Hồ sơ được xác thực trước khi có quyết định khoản vay
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ĐĂNG KÝ -->
+<section id="registerPage" class="hidden">
+
+  <div class="card">
+    <div class="title">Tạo tài khoản</div>
+    <div class="sub">
+      Nhập thông tin để tạo tài khoản.
+    </div>
+
+    <label>Họ và tên</label>
+    <input class="input" type="text" placeholder="Nguyễn Văn A">
+
+    <label>Số điện thoại</label>
+    <input class="input" type="tel" placeholder="09xxxxxxxx">
+
+    <label>Mật khẩu</label>
+    <input class="input" type="password" placeholder="Tạo mật khẩu">
+
+    <label>Nhập lại mật khẩu</label>
+    <input class="input" type="password" placeholder="Nhập lại mật khẩu">
+
+    <button class="btn btn-red" onclick="createAccount()">
+      Tạo tài khoản
+    </button>
+
+    <button class="btn btn-light" onclick="showLogin()">
+      Quay lại đăng nhập
+    </button>
+  </div>
+
+</section>
+
+
+<!-- TRANG CHÍNH -->
+<section id="homePage" class="hidden">
+
+  <div class="card">
+    <div class="title">Xin chào 👋</div>
+    <div class="sub">
+      Bạn có thể bắt đầu hồ sơ vay của mình.
+    </div>
+
+    <div class="amount" id="amount">
+      10.000.000₫
+    </div>
+
+    <input
+      class="range"
+      type="range"
+      min="1000000"
+      max="100000000"
+      step="1000000"
+      value="10000000"
+      oninput="changeAmount(this.value)"
+    >
+
+    <div class="quick">
+      <button onclick="setAmount(5000000)">5 triệu</button>
+      <button onclick="setAmount(10000000)">10 triệu</button>
+      <button onclick="setAmount(20000000)">20 triệu</button>
+      <button onclick="setAmount(50000000)">50 triệu</button>
+    </div>
+
+    <button class="btn btn-red" onclick="startLoan()">
+      VAY NGAY
+    </button>
+  </div>
+
+  <div class="card">
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-text">Thông tin tài khoản</div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-text">Thông tin cá nhân</div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-text">Xác thực hồ sơ</div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-text">Theo dõi trạng thái</div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- BƯỚC 1 -->
+<section id="step1" class="hidden">
+
+  <div class="card">
+
+    <div class="title">Bước 1 — Thông tin tài khoản</div>
+
+    <div class="sub">
+      Vui lòng nhập chính xác thông tin tài khoản nhận tiền.
+    </div>
+
+    <label>Số CCCD</label>
+    <input id="cccd" class="input" type="text"
+      inputmode="numeric"
+      maxlength="12"
+      placeholder="Nhập số CCCD">
+
+    <label>Số tài khoản ngân hàng</label>
+    <input id="bankAccount" class="input" type="text"
+      inputmode="numeric"
+      placeholder="Nhập số tài khoản">
+
+    <label>Ngân hàng</label>
+    <select id="bank" class="input">
+      <option value="">-- Chọn ngân hàng --</option>
+      <option>Vietcombank</option>
+      <option>VietinBank</option>
+      <option>BIDV</option>
+      <option>Agribank</option>
+      <option>MB Bank</option>
+      <option>Techcombank</option>
+      <option>ACB</option>
+      <option>VPBank</option>
+      <option>TPBank</option>
+      <option>SHB</option>
+      <option>Ngân hàng khác</option>
+    </select>
+
+    <div class="warning">
+      Không nhập thông tin thẻ ATM, mã CVV hoặc mã OTP vào website.
+    </div>
+
+    <button class="btn btn-blue" onclick="nextStep2()">
+      Tiếp tục
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- BƯỚC 2 -->
+<section id="step2" class="hidden">
+
+  <div class="card">
+
+    <div class="title">Bước 2 — Thông tin cá nhân</div>
+
+    <div class="sub">
+      Vui lòng cung cấp thông tin phục vụ quá trình xác thực hồ sơ.
+    </div>
+
+    <label>Họ và tên</label>
+    <input class="input" type="text"
+      placeholder="Nhập họ và tên">
+
+    <label>Ngày sinh</label>
+    <input class="input" type="date">
+
+    <label>Giới tính</label>
+    <select class="input">
+      <option>-- Chọn giới tính --</option>
+      <option>Nam</option>
+      <option>Nữ</option>
+      <option>Khác</option>
+    </select>
+
+    <label>Nghề nghiệp</label>
+    <select class="input">
+      <option>-- Chọn nghề nghiệp --</option>
+      <option>Nhân viên văn phòng</option>
+      <option>Công nhân</option>
+      <option>Kinh doanh</option>
+      <option>Lao động tự do</option>
+      <option>Tài xế</option>
+      <option>Khác</option>
+    </select>
+
+    <label>Thu nhập hàng tháng</label>
+    <input class="input" type="number"
+      placeholder="Ví dụ: 12000000">
+
+    <label>Nơi ở hiện tại</label>
+    <input class="input" type="text"
+      placeholder="Tỉnh/thành phố">
+
+    <label>Địa chỉ</label>
+    <input class="input" type="text"
+      placeholder="Nhập địa chỉ">
+
+    <button class="btn btn-red" onclick="submitApplication()">
+      Gửi hồ sơ
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- XÁC THỰC -->
+<section id="processing" class="hidden">
+
+  <div class="card status">
+
+    <div class="spinner"></div>
+
+    <div class="title">
+      Đang tiến hành xác thực hồ sơ
+    </div>
+
+    <div class="sub">
+      Hệ thống đang kiểm tra thông tin hồ sơ của bạn.
+      Vui lòng giữ nguyên trang trong quá trình xử lý.
+    </div>
+
+    <div class="info">
+      Thời gian xử lý dự kiến: <b>khoảng 5 phút</b>.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- KẾT QUẢ -->
+<section id="resultPage" class="hidden">
+
+  <div class="card status">
+
+    <div class="success-icon">✓</div>
+
+    <div class="title">
+      Hồ sơ đã được tiếp nhận
+    </div>
+
+    <div class="sub">
+      Hồ sơ của bạn đã được ghi nhận và đang trong quá trình
+      xác thực thông tin.
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="title">
+      Thông tin phí hồ sơ
+    </div>
+
+    <div class="warning">
+
+      <b>Phí hồ sơ: 350.000₫</b><br><br>
+
+      STK nhận phí:
+      <b>[SẼ CẬP NHẬT SAU]</b><br>
+
+      Ngân hàng:
+      <b>[SẼ CẬP NHẬT SAU]</b><br>
+
+      Chủ tài khoản:
+      <b>[SẼ CẬP NHẬT SAU]</b>
+
+    </div>
+
+    <p style="font-size:13px;color:#666;margin-top:12px;line-height:1.5;">
+      Thông tin phí và tài khoản thanh toán chỉ được sử dụng
+      khi đã được đơn vị cung cấp khoản vay xác nhận và công bố
+      đầy đủ trong điều khoản dịch vụ.
+    </p>
+
+  </div>
+
+</section>
+
+
+<footer>
+  © 2026 HUYNHDAITACOO<br>
+  Thông tin trên website cần được đối chiếu với điều khoản
+  và chính sách chính thức của đơn vị cung cấp dịch vụ.
+</footer>
+
+</div>
+
+
+<script>
+
+let loanAmount = 10000000;
+
+function money(number){
+  return Number(number).toLocaleString('vi-VN') + '₫';
+}
+
+function changeAmount(value){
+  loanAmount = Number(value);
+  document.getElementById("amount").innerText = money(value);
+}
+
+function setAmount(value){
+  loanAmount = value;
+  document.getElementById("amount").innerText = money(value);
+}
+
+function hideAll(){
+  document.querySelectorAll("section").forEach(function(el){
+    el.classList.add("hidden");
+  });
+}
+
+function showLogin(){
+  hideAll();
+  document.getElementById("loginPage").classList.remove("hidden");
+}
+
+function showRegister(){
+  hideAll();
+  document.getElementById("registerPage").classList.remove("hidden");
+}
+
+function createAccount(){
+  alert("Tài khoản đã được tạo. Vui lòng đăng nhập.");
+  showLogin();
+}
+
+function login(){
+  hideAll();
+  document.getElementById("homePage").classList.remove("hidden");
+}
+
+function startLoan(){
+  hideAll();
+  document.getElementById("step1").classList.remove("hidden");
+}
+
+function nextStep2(){
+
+  let cccd = document.getElementById("cccd").value;
+  let account = document.getElementById("bankAccount").value;
+  let bank = document.getElementById("bank").value;
+
+  if(cccd.length !== 12){
+    alert("Vui lòng kiểm tra số CCCD.");
+    return;
+  }
+
+  if(account.length < 6){
+    alert("Vui lòng kiểm tra số tài khoản.");
+    return;
+  }
+
+  if(bank === ""){
+    alert("Vui lòng chọn ngân hàng.");
+    return;
+  }
+
+  hideAll();
+  document.getElementById("step2").classList.remove("hidden");
+}
+
+function submitApplication(){
+
+  hideAll();
+  document.getElementById("processing").classList.remove("hidden");
+
+  setTimeout(function(){
+
+    hideAll();
+    document.getElementById("resultPage").classList.remove("hidden");
+
+  },5000);
+
+}
+
+</script>
+
+</body>
+</html>
