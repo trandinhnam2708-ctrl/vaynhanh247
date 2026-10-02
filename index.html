@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VayNhanh | Vay online minh bạch</title>
+<meta name="description" content="Website demo dịch vụ tài chính VayNhanh">
+<style>
+:root{--p:#2563eb;--p2:#1d4ed8;--ink:#0f172a;--muted:#64748b;--bg:#f8fafc;--line:#e2e8f0;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{text-decoration:none;color:inherit}.wrap{max-width:1120px;margin:auto;padding:0 20px}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.nav{height:70px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:24px;font-weight:900;color:var(--p)}
+.navlinks{display:flex;gap:24px;color:#475569;font-size:14px;font-weight:600}.menu{display:none;background:none;border:0;font-size:25px}
+.btn{display:inline-block;border:0;border-radius:12px;background:var(--p);color:#fff;padding:13px 20px;font-weight:800;cursor:pointer}.btn:hover{background:var(--p2)}
+.hero{padding:75px 0;background:linear-gradient(135deg,#eff6ff 0%,#fff 60%)}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.badge{display:inline-block;background:#dbeafe;color:#1d4ed8;border-radius:99px;padding:7px 12px;font-size:12px;font-weight:800}
+h1{font-size:50px;line-height:1.06;margin:18px 0}.lead{font-size:18px;line-height:1.7;color:var(--muted);max-width:650px}.actions{display:flex;gap:12px;margin-top:25px}.btn.alt{background:#fff;color:var(--p);border:1px solid #bfdbfe}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px;box-shadow:0 15px 45px rgba(15,23,42,.07)}
+.calc h2{margin-top:0}.labelrow{display:flex;justify-content:space-between;margin-top:15px;font-size:14px;font-weight:700}.blue{color:var(--p)}
+input,select,textarea{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:10px;margin-top:8px;font:inherit;background:#fff}input[type=range]{padding:0}
+.result{background:#eff6ff;border-radius:14px;padding:17px;margin-top:18px}.big{font-size:28px;font-weight:900;color:var(--p);margin:4px 0}
+section{padding:70px 0}.center{text-align:center}.muted{color:var(--muted);line-height:1.65}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}.icon{font-size:28px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.full{grid-column:1/-1}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.step{position:relative}.num{font-size:14px;font-weight:900;color:var(--p);background:#dbeafe;border-radius:50%;width:35px;height:35px;display:grid;place-items:center}
+.notice{background:#f8fafc;border:1px solid var(--line);padding:13px;border-radius:10px;font-size:13px;color:var(--muted)}
+footer{background:#0f172a;color:#cbd5e1;padding:38px 0}.foot{display:flex;justify-content:space-between;gap:30px}.small{font-size:13px;line-height:1.6}
+#toast{position:fixed;right:18px;bottom:18px;background:#0f172a;color:#fff;padding:14px 17px;border-radius:12px;display:none;z-index:30}
+@media(max-width:800px){.navlinks{display:none}.menu{display:block}.hero{padding:48px 0}.hero-grid,.features,.steps,.formgrid{grid-template-columns:1fr}h1{font-size:39px}.actions{flex-wrap:wrap}.foot{display:block}.card{padding:20px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="#">VayNhanh</a>
+<nav class="navlinks"><a href="#tinh">Tính khoản vay</a><a href="#quytrinh">Quy trình</a><a href="#dangky">Đăng ký</a></nav>
+<button class="menu" onclick="document.querySelector('.navlinks').classList.toggle('show')">☰</button>
+</div></header>
+
+<section class="hero"><div class="wrap hero-grid">
+<div><span class="badge">WEBSITE DEMO</span><h1>Khoản vay rõ ràng, thông tin dễ hiểu.</h1>
+<p class="lead">Giao diện mẫu cho nền tảng tài chính trực tuyến. Khách hàng có thể xem khoản vay dự kiến và gửi yêu cầu ngay trên điện thoại hoặc máy tính.</p>
+<div class="actions"><a class="btn" href="#dangky">Đăng ký khoản vay</a><a class="btn alt" href="#tinh">Tính khoản trả</a></div></div>
+<div class="card calc" id="tinh"><h2>Ước tính khoản vay</h2>
+<div class="labelrow"><span>Số tiền</span><span class="blue" id="amountTxt"></span></div><input id="amount" type="range" min="5000000" max="100000000" step="1000000" value="20000000">
+<div class="labelrow"><span>Kỳ hạn</span><span class="blue" id="termTxt"></span></div><input id="term" type="range" min="3" max="36" value="12">
+<label class="labelrow">Lãi suất minh họa (%/năm)</label><input id="rate" type="number" min="0" max="100" step=".1" value="18">
+<div class="result"><div>Khoản trả dự kiến mỗi tháng</div><div class="big" id="monthly"></div><div class="muted" id="total"></div></div>
+</div></div></section>
+
+<section><div class="wrap"><div class="center"><h2>Vì sao dùng mẫu này?</h2><p class="muted">Thiết kế tập trung vào trải nghiệm đơn giản và thông tin minh bạch.</p></div>
+<div class="features"><div class="card"><div class="icon">🧮</div><h3>Ước tính nhanh</h3><p class="muted">Thay đổi số tiền, kỳ hạn và lãi suất để xem khoản trả dự kiến.</p></div>
+<div class="card"><div class="icon">📱</div><h3>Tối ưu điện thoại</h3><p class="muted">Giao diện responsive, phù hợp màn hình điện thoại và laptop.</p></div>
+<div class="card"><div class="icon">🔐</div><h3>Thiết kế an toàn</h3><p class="muted">Bản demo không lưu dữ liệu khách hàng và chưa kết nối giải ngân.</p></div></div></div></section>
+
+<section id="quytrinh" style="background:#fff"><div class="wrap"><div class="center"><h2>Quy trình mẫu</h2></div>
+<div class="steps"><div class="card step"><div class="num">1</div><h3>Điền thông tin</h3><p class="muted">Gửi yêu cầu khoản vay qua biểu mẫu.</p></div><div class="card step"><div class="num">2</div><h3>Xem xét</h3><p class="muted">Đơn vị cung cấp dịch vụ xử lý hồ sơ theo quy định.</p></div><div class="card step"><div class="num">3</div><h3>Thông báo</h3><p class="muted">Người dùng nhận thông tin về trạng thái hồ sơ và điều khoản.</p></div></div></div></section>
+
+<section id="dangky"><div class="wrap"><div class="card"><h2>Đăng ký khoản vay — DEMO</h2><p class="muted">Không nhập CCCD, tài khoản ngân hàng, mật khẩu hoặc thông tin nhạy cảm thật vào bản demo.</p>
+<form id="form"><div class="formgrid"><div><label>Họ tên</label><input required placeholder="Nguyễn Văn A"></div><div><label>Số điện thoại</label><input required placeholder="09xxxxxxxx"></div>
+<div><label>Số tiền mong muốn</label><input required type="number" min="5000000" placeholder="20000000"></div><div><label>Kỳ hạn</label><select><option>6 tháng</option><option selected>12 tháng</option><option>18 tháng</option><option>24 tháng</option></select></div>
+<div class="full"><label>Ghi chú</label><textarea rows="3" placeholder="Nhu cầu vay (không bắt buộc)"></textarea></div></div>
+<div class="notice" style="margin-top:16px">Đây là prototype. Chưa có phê duyệt, định danh, lưu hồ sơ, ký hợp đồng, giải ngân hoặc thanh toán thật.</div><br><button class="btn">Gửi yêu cầu demo</button></form></div></div></section>
+</body>
+<footer><div class="wrap foot"><div><strong>VayNhanh</strong><p class="small">Prototype website tài chính — 2026</p></div><div class="small">Lưu ý: Đây không phải lời mời vay hoặc cam kết cấp tín dụng. Các thông số trên chỉ nhằm minh họa giao diện.</div></div></footer>
+<div id="toast">Đã gửi yêu cầu DEMO — chưa có dữ liệu nào được lưu.</div>
+
+<script>
+const money=n=>new Intl.NumberFormat('vi-VN').format(Math.round(n))+'đ';
+function calc(){let P=+amount.value,m=+term.value,r=+rate.value/100/12;let pay=r?P*r*Math.pow(1+r,m)/(Math.pow(1+r,m)-1):P/m;amountTxt.textContent=money(P);termTxt.textContent=m+' tháng';monthly.textContent=money(pay);total.textContent='Tổng dự kiến: '+money(pay*m)+' · chỉ minh họa';}
+[amount,term,rate].forEach(x=>x.addEventListener('input',calc));calc();
+form.addEventListener('submit',e=>{e.preventDefault();toast.style.display='block';setTimeout(()=>toast.style.display='none',3000);form.reset();calc()});
+</script>
+</html>
