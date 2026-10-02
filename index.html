@@ -684,17 +684,19 @@ function startLoan(){
 
 function nextStep2(){
 
-  let cccd = document.getElementById("cccd").value;
-  let account = document.getElementById("bankAccount").value;
-  let bank = document.getElementById("bank").value;
+  function nextStep2(){
 
-  if(cccd.length !== 12){
-    alert("Vui lòng kiểm tra số CCCD.");
+  const cccd = document.getElementById("cccd").value.trim();
+  const account = document.getElementById("bankAccount").value.trim();
+  const bank = document.getElementById("bank").value;
+
+  if(!/^\d{12}$/.test(cccd)){
+    alert("CCCD phải gồm đúng 12 chữ số.");
     return;
   }
 
-  if(account.length < 6){
-    alert("Vui lòng kiểm tra số tài khoản.");
+  if(!/^\d{6,20}$/.test(account)){
+    alert("Số tài khoản phải gồm từ 6 đến 20 chữ số.");
     return;
   }
 
@@ -709,6 +711,50 @@ function nextStep2(){
 
 function submitApplication(){
 
+  function submitApplication(){
+
+  const nameInputs = document.querySelectorAll('#step2 input[type="text"]');
+  const fullName = nameInputs[0].value.trim();
+
+  const birthday = document.querySelector('#step2 input[type="date"]').value;
+
+  const selects = document.querySelectorAll('#step2 select');
+  const gender = selects[0].value;
+  const job = selects[1].value;
+
+  const income = document.querySelector('#step2 input[type="number"]').value;
+  const province = document.getElementById("province").value;
+
+  if(!/^[A-Za-zÀ-ỹĐđ\s]{2,60}$/.test(fullName)){
+    alert("Họ tên không hợp lệ. Vui lòng nhập họ tên bằng chữ.");
+    return;
+  }
+
+  if(!birthday){
+    alert("Vui lòng nhập ngày sinh.");
+    return;
+  }
+
+  if(gender === "-- Chọn giới tính --"){
+    alert("Vui lòng chọn giới tính.");
+    return;
+  }
+
+  if(job === "-- Chọn nghề nghiệp --"){
+    alert("Vui lòng chọn nghề nghiệp.");
+    return;
+  }
+
+  if(!income || Number(income) <= 0){
+    alert("Vui lòng nhập thu nhập hàng tháng hợp lệ.");
+    return;
+  }
+
+  if(province === ""){
+    alert("Vui lòng chọn tỉnh / thành phố.");
+    return;
+  }
+
   hideAll();
   document.getElementById("processing").classList.remove("hidden");
 
@@ -718,7 +764,6 @@ function submitApplication(){
     document.getElementById("resultPage").classList.remove("hidden");
 
   },5000);
-
 }
 
 </script>
