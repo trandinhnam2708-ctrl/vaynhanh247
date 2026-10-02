@@ -819,7 +819,7 @@ function money(number){
   return Number(number).toLocaleString('vi-VN') + '₫';
 }
 
-function changeAmount(value){
+function setAmount(value){
   loanAmount = Number(value);
   document.getElementById("amount").innerText = money(value);
 }
