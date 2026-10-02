@@ -824,11 +824,6 @@ function setAmount(value){
   document.getElementById("amount").innerText = money(value);
 }
 
-function setAmount(value){
-  loanAmount = value;
-  document.getElementById("amount").innerText = money(value);
-}
-
 function hideAll(){
   document.querySelectorAll("section").forEach(function(el){
     el.classList.add("hidden");
@@ -863,10 +858,9 @@ function startLoan(){
   if(step1){
     step1.classList.remove("hidden");
   }else{
-    alert("Không tìm thấy phần đăng ký hồ sơ. Vui lòng kiểm tra id step1.");
+    alert("Không tìm thấy phần đăng ký hồ sơ.");
   }
 }
-  
 
 function nextStep2(){
 
@@ -890,22 +884,31 @@ function nextStep2(){
   }
 
   hideAll();
-  document.getElementById("step2").classList.remove("hidden");
+
+  const step2 = document.getElementById("step2");
+
+  if(step2){
+    step2.classList.remove("hidden");
+  }
 }
 
 function submitApplication(){
 
   const nameInputs = document.querySelectorAll('#step2 input[type="text"]');
-  const fullName = nameInputs[0].value.trim();
+  const fullName = nameInputs[0] ? nameInputs[0].value.trim() : "";
 
-  const birthday = document.querySelector('#step2 input[type="date"]').value;
+  const birthdayElement = document.querySelector('#step2 input[type="date"]');
+  const birthday = birthdayElement ? birthdayElement.value : "";
 
   const selects = document.querySelectorAll('#step2 select');
-  const gender = selects[0].value;
-  const job = selects[1].value;
+  const gender = selects[0] ? selects[0].value : "";
+  const job = selects[1] ? selects[1].value : "";
 
-  const income = document.querySelector('#step2 input[type="number"]').value;
-  const province = document.getElementById("province").value;
+  const incomeElement = document.querySelector('#step2 input[type="number"]');
+  const income = incomeElement ? incomeElement.value : "";
+
+  const provinceElement = document.getElementById("province");
+  const province = provinceElement ? provinceElement.value : "";
 
   if(!/^[A-Za-zÀ-ỹĐđ\s]{2,60}$/.test(fullName)){
     alert("Họ tên không hợp lệ. Vui lòng nhập họ tên bằng chữ.");
@@ -917,12 +920,12 @@ function submitApplication(){
     return;
   }
 
-  if(gender === "-- Chọn giới tính --"){
+  if(gender === "" || gender === "-- Chọn giới tính --"){
     alert("Vui lòng chọn giới tính.");
     return;
   }
 
-  if(job === "-- Chọn nghề nghiệp --"){
+  if(job === "" || job === "-- Chọn nghề nghiệp --"){
     alert("Vui lòng chọn nghề nghiệp.");
     return;
   }
@@ -938,23 +941,44 @@ function submitApplication(){
   }
 
   hideAll();
-  document.getElementById("processing").classList.remove("hidden");
+
+  const processing = document.getElementById("processing");
+
+  if(processing){
+    processing.classList.remove("hidden");
+  }
 
   setTimeout(function(){
 
     hideAll();
-    document.getElementById("resultPage").classList.remove("hidden");
+
+    const resultPage = document.getElementById("resultPage");
+
+    if(resultPage){
+      resultPage.classList.remove("hidden");
+    }
 
   },5000);
 }
+
 function showTerms(){
   hideAll();
-  document.getElementById("termsPage").classList.remove("hidden");
+
+  const termsPage = document.getElementById("termsPage");
+
+  if(termsPage){
+    termsPage.classList.remove("hidden");
+  }
 }
 
 function showContact(){
   hideAll();
-  document.getElementById("contactPage").classList.remove("hidden");
+
+  const contactPage = document.getElementById("contactPage");
+
+  if(contactPage){
+    contactPage.classList.remove("hidden");
+  }
 }
 </script>
 </body>
